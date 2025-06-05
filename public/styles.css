@@ -1,0 +1,16 @@
+body {
+  background-color: #f9f9f9;
+}
+.card {
+  border-radius: 1rem;
+}
+.blog-card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,16 @@
+<%- include('partials/header') %>
+
+<h2>Create New Post</h2>
+<form action="/create" method="POST">
+  <div class="mb-3">
+    <label>Title</label>
+    <input type="text" name="title" class="form-control" required />
+  </div>
+  <div class="mb-3">
+    <label>Content</label>
+    <textarea name="content" class="form-control" rows="5" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Create</button>
+</form>
+
+<%- include('partials/footer') %>
