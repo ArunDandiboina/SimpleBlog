@@ -26,7 +26,10 @@ app.get("/", (req, res) => {
 });
 
 app.get("/post/:id", (req, res) => {
-  const id = req.params.id;
+  const id = parseInt(req.params.id);
+  if (isNaN(id) || id < 0 || id >= posts.length) {
+    return res.status(404).send("Post not found");
+  }
   res.render("post", { post: posts[id], id });
 });
 
@@ -41,19 +44,28 @@ app.post("/create", (req, res) => {
 });
 
 app.get("/edit/:id", (req, res) => {
-  const id = req.params.id;
+  const id = parseInt(req.params.id);
+  if (isNaN(id) || id < 0 || id >= posts.length) {
+    return res.status(404).send("Post not found");
+  }
   res.render("edit", { post: posts[id], id });
 });
 
 app.post("/update/:id", (req, res) => {
-  const id = req.params.id;
+  const id = parseInt(req.params.id);
+  if (isNaN(id) || id < 0 || id >= posts.length) {
+    return res.status(404).send("Post not found");
+  }
   const { title, content } = req.body;
   posts[id] = { title, content };
   res.redirect("/post/" + id);
 });
 
 app.get("/delete/:id", (req, res) => {
-  const id = req.params.id;
+  const id = parseInt(req.params.id);
+  if (isNaN(id) || id < 0 || id >= posts.length) {
+    return res.status(404).send("Post not found");
+  }
   posts.splice(id, 1);
   res.redirect("/");
 });
